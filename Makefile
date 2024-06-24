@@ -58,7 +58,7 @@ bonus		:	$(B_OBJS)
 clean		:
 			@echo "$(RED)===========$(WHITE)clean$(RED)===========$(RESET)"
 			@echo "$(RED)Cleaning up...$(RESET)"
-			@rm -f $(OBJS) $(B_OBJS)
+			@rm -f $(CLI_OBJS) $(SRV_OBJS)
 			@cd $(LIBFT_PATH) && make clean
 			@echo "$(RED)Cleaning complete!$(RESET)"
 			@echo "$(RED)===========$(WHITE)clean$(RED)===========$(RESET)"
@@ -66,7 +66,7 @@ clean		:
 fclean		:	clean
 			@echo "$(RED)===========$(CYAN)fclean$(RED)===========$(RESET)"
 			@echo "$(RED)Deleting .a files...$(RESET)"
-			@rm -f $(NAME) checker
+			@rm -f $(CLIENT) $(SERVER)
 			@cd $(LIBFT_PATH) && make fclean
 			@echo "$(RED)Delete complete!$(RESET)"
 			@echo "$(RED)===========$(CYAN)fclean$(RED)===========$(RESET)"
