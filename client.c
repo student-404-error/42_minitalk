@@ -10,16 +10,20 @@ void	send_str(int pid, char *msg)
 	int	j;
 
 	i = 0;
-	(void) pid;
 	while (msg[i])
 	{
 		j = 0;
 		while (j < 8)
 		{
-			ft_printf("%d ", msg[i] >> (7 - j) & 1);
+			int	bit = msg[i] >> (7 - j) & 1;
+			ft_printf("%d\n", bit);
+			if (bit == 0)
+				kill(pid, SIGUSR1);
+			else if (bit == 1)
+				kill(pid, SIGUSR2);
 			j++;
+			usleep(50);
 		}
-		write(1, "\n", 1);
 		i++;
 	}
 }
@@ -40,8 +44,6 @@ int main(int ac, char *av[])
 		return (1);
 	}
 	send_str(pid, av[2]);
-//	kill(pid, SIGUSR1);
-	kill(pid, SIGUSR2);
 	return (0);
 
 }
